@@ -1,10 +1,18 @@
 package io.codingbox.sparkapp;
 
 import com.beust.jcommander.JCommander;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.template.Configuration;
+import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -21,6 +29,23 @@ public class App
 {
     private static final Logger logger = Logger.getLogger(App.class.getCanonicalName());
 
+    public static String dataToJson(Object data) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.enable(SerializationFeature.INDENT_OUTPUT);
+            StringWriter sw = new StringWriter();
+            mapper.writeValue(sw, data);
+            return sw.toString();
+        } catch (IOException e){
+            throw new RuntimeException("IOException from a StringWriter?");
+        }
+    }
+
+    private static boolean shouldReturnHtml(Request request) {
+        String accept = request.headers("Accept");
+        return accept != null && accept.contains("text/html");
+    }
+
     public static void main( String[] args )
     {
         CommandLineOptions options = new CommandLineOptions();
@@ -36,7 +61,18 @@ public class App
         freeMarkerConfiguration.setTemplateLoader(new ClassTemplateLoader(App.class, "/"));
         freeMarkerEngine.setConfiguration(freeMarkerConfiguration);
 
-        get("/hello", (req, res) -> "Hello World");
+        get("/", (request, response) -> {
+            if (shouldReturnHtml(request)) {
+                response.status(200);
+                response.type("text/html");
+                Map<String, Object> attributes = new HashMap<>();
+                return freeMarkerEngine.render(new ModelAndView(attributes, "index.ftl"));
+            } else {
+                response.status(200);
+                response.type("application/json");
+                return dataToJson(null);
+            }
+        });
 
         get("/alive", (request, response) -> "ok");
     }

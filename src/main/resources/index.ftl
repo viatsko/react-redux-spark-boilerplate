@@ -8,6 +8,6 @@
     <title>React Redux Spark Boilerplate</title>
 </head>
 <body>
-
+    <h1>React Redux Spark Boilerplate</h1>
 </body>
 </html>
