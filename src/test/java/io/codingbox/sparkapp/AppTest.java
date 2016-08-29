@@ -1,4 +1,4 @@
-package io.codingbox.react-redux-spark-boilerplate;
+package io.codingbox.sparkapp;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
