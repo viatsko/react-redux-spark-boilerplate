@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import freemarker.cache.ClassTemplateLoader;
+import freemarker.cache.NullCacheStorage;
 import freemarker.template.Configuration;
 import spark.ModelAndView;
 import spark.Request;
@@ -59,6 +60,11 @@ public class App
         FreeMarkerEngine freeMarkerEngine = new FreeMarkerEngine();
         Configuration freeMarkerConfiguration = new Configuration();
         freeMarkerConfiguration.setTemplateLoader(new ClassTemplateLoader(App.class, "/"));
+
+        if (options.debug) {
+            freeMarkerConfiguration.setCacheStorage(new NullCacheStorage());
+        }
+
         freeMarkerEngine.setConfiguration(freeMarkerConfiguration);
 
         get("/", (request, response) -> {

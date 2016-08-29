@@ -7,7 +7,7 @@ import com.beust.jcommander.Parameter;
  */
 public class CommandLineOptions {
     @Parameter(names = "--debug")
-    boolean debug = false;
+    boolean debug = true;
 
     @Parameter(names = {"--service-port"})
     Integer servicePort = 5000;
