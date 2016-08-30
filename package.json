@@ -1,0 +1,19 @@
+{
+  "name": "react-redux-spark-boilerplate",
+  "version": "0.1.0",
+  "description": "Boilerplate for Java Spark using React & Redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viatsko/react-redux-spark-boilerplate.git"
+  },
+  "author": "Valerii Iatsko <dwr@codingbox.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/viatsko/react-redux-spark-boilerplate/issues"
+  },
+  "homepage": "https://github.com/viatsko/react-redux-spark-boilerplate#readme"
+}
