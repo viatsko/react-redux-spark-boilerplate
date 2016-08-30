@@ -1,6 +1,11 @@
 import React from 'react';
 
-const App = () =>
-  <div>Spark React Redux Boilerplate</div>;
+import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
 
-export default App;
+export const App = () =>
+  <div>
+    <Header />
+    <div>Spark React Redux Boilerplate</div>
+    <Footer />
+  </div>;

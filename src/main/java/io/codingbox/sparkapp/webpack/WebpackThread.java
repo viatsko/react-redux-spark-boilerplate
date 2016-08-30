@@ -2,6 +2,7 @@ package io.codingbox.sparkapp.webpack;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import static spark.Spark.staticFiles;
 

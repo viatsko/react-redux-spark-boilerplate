@@ -4,7 +4,7 @@ const webpack = require('webpack');
 require('babel-polyfill').default; // eslint-disable-line no-unused-expressions
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
     './src/index',
@@ -24,13 +24,14 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"development"',
       },
       __DEVELOPMENT__: true,
     }),
-    new webpack.HotModuleReplacementPlugin(),
   ],
   resolve: {
     extensions: ['', '.jsx', '.js', '.json', '.scss'],
