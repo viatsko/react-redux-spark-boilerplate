@@ -17,6 +17,14 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/frontend</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
     <name>react-redux-spark-boilerplate</name>
     <url>http://maven.apache.org</url>
