@@ -5,11 +5,13 @@ import { Footer } from '../components/Footer';
 
 class App extends React.Component {
   render() {
-    return <div>
-      <Header />
-      <div>Spark React Redux Boilerplate</div>
-      <Footer />
-    </div>;
+    return (
+      <div>
+        <Header />
+        <div>Spark React Redux Boilerplate</div>
+        <Footer />
+      </div>
+    );
   }
 }
 
