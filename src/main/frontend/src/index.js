@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = () =>
-  <div>Welcome to the Spark React Redux Boilerplate!</div>;
+import App from './containers/App';
 
 ReactDOM.render(
   <App />,

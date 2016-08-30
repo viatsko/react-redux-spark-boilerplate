@@ -10,7 +10,7 @@ import static spark.Spark.staticFiles;
  */
 public class WebpackThread {
     public static void run() {
-        ProcessBuilder pb = new ProcessBuilder("node", "server");
+        ProcessBuilder pb = new ProcessBuilder("npm", "start");
 
         String projectDir = System.getProperty("user.dir");
         String staticDir = "/src/main/frontend";
