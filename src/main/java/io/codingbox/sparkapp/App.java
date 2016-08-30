@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.cache.NullCacheStorage;
 import freemarker.template.Configuration;
+import io.codingbox.sparkapp.webpack.WebpackThread;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -64,6 +65,8 @@ public class App
 
         if (options.debug) {
             freeMarkerConfiguration.setCacheStorage(new NullCacheStorage());
+
+            WebpackThread.run();
         }
 
         freeMarkerEngine.setConfiguration(freeMarkerConfiguration);
