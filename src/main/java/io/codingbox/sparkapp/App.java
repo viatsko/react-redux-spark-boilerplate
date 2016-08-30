@@ -20,9 +20,7 @@ import spark.Response;
 import spark.Route;
 import spark.template.freemarker.FreeMarkerEngine;
 
-import static spark.Spark.get;
-import static spark.Spark.port;
-import static spark.Spark.staticFileLocation;
+import static spark.Spark.*;
 
 /**
  * Hello world!
@@ -71,7 +69,14 @@ public class App
 
         freeMarkerEngine.setConfiguration(freeMarkerConfiguration);
 
-        staticFileLocation("/public");
+        if (options.debug) {
+            String projectDir = System.getProperty("user.dir");
+            String staticDir = "/src/main/frontend/public";
+
+            staticFiles.externalLocation(projectDir + staticDir);
+        } else {
+            staticFileLocation("/public");
+        }
 
         get("/", (request, response) -> {
             if (shouldReturnHtml(request)) {
