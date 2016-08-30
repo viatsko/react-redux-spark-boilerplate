@@ -21,6 +21,7 @@ import spark.template.freemarker.FreeMarkerEngine;
 
 import static spark.Spark.get;
 import static spark.Spark.port;
+import static spark.Spark.staticFileLocation;
 
 /**
  * Hello world!
@@ -66,6 +67,8 @@ public class App
         }
 
         freeMarkerEngine.setConfiguration(freeMarkerConfiguration);
+
+        staticFileLocation("/public");
 
         get("/", (request, response) -> {
             if (shouldReturnHtml(request)) {
