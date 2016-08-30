@@ -1,9 +1,11 @@
 module.exports = {
+    root: true,
+
     extends: 'airbnb',
 
     parser: 'babel-eslint',
 
     rules: {
-        "import/no-extraneos-dependencies": 0,
+        "import/no-extraneous-dependencies": 0,
     }
 };
